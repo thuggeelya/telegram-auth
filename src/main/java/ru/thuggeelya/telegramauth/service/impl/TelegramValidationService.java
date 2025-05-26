@@ -27,10 +27,12 @@ public class TelegramValidationService implements ValidationService {
         );
 
         final String dataCheckString = String.join(
-                "\n", data.entrySet().stream()
-                          .sorted(Map.Entry.comparingByKey())
-                          .map(e -> e.getKey() + "=" + e.getValue())
-                          .toList()
+                "\n",
+                data.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .map(e -> e.getKey() + "=" + e.getValue())
+                    .toList()
         );
 
         try {
