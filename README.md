@@ -45,6 +45,8 @@ docker-compose up --build
 docker compose up --build
 ```
 
+- в случае ошибок ngrok контейнера попробуйте включить VPN и пересобрать контейнеры
+
 ### 6. Указать webapp URL для бота
 
 - скопировать [адрес ngrok тоннеля](https://dashboard.ngrok.com/endpoints) (будет доступен после запуска ngrok
