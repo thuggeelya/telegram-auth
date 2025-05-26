@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.ci/.env
+node_modules/

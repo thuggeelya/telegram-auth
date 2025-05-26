@@ -4,8 +4,9 @@
 
 create table if not exists users
 (
-    id         bigserial primary key,
+    id         bigint primary key,
     first_name varchar(55),
     last_name  varchar(55),
-    username   varchar not null unique
+    username   varchar not null unique,
+    photo_url  varchar
 );
