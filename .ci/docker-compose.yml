@@ -1,0 +1,38 @@
+services:
+
+  postgres:
+    image: postgres:16
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_DB: telegram_db
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - dns
+
+  server:
+    build:
+      context: ..
+      dockerfile: .ci/Dockerfile
+    container_name: server
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/telegram_db
+    networks:
+      - dns
+
+volumes:
+  pg_data:
+
+networks:
+  dns:
