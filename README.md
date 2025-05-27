@@ -33,16 +33,16 @@ TELEGRAM_BOT_TOKEN=<токен бота Telegram (например, из BotFath
 NGROK_AUTHTOKEN=<authtoken из профиля ngrok>
 ```
 
-### 5. Запустить проект
+### 5. Запустить проект в корне проекта
 
 ```bash
 # MacOS
-docker-compose up --build
+docker-compose -f .ci/docker-compose.yml up --build
 ```
 
 ```bash
 # Windows/Linux-like
-docker compose up --build
+docker compose -f .ci/docker-compose.yml up --build
 ```
 
 - в случае ошибок ngrok контейнера попробуйте включить VPN и пересобрать контейнеры
